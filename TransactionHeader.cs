@@ -12,28 +12,21 @@ namespace figYureD
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class TransactionHeader
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public TransactionHeader()
         {
-            this.TransactionHeaders = new HashSet<TransactionHeader>();
-            this.UserCarts = new HashSet<UserCart>();
+            this.TransactionDetails = new HashSet<TransactionDetail>();
         }
     
-
         public string Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string UserId { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime UpdatedAt { get; set; }
-        public int Balance { get; set; }
-        public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionHeader> TransactionHeaders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCart> UserCarts { get; set; }
+        public virtual ICollection<TransactionDetail> TransactionDetails { get; set; }
+        public virtual User User { get; set; }
     }
 }

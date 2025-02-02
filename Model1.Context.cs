@@ -26,5 +26,11 @@ namespace figYureD
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<FigurineImage> FigurineImages { get; set; }
+        public virtual DbSet<Figurine> Figurines { get; set; }
+        public virtual DbSet<Manufacturer> Manufacturers { get; set; }
+        public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
+        public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
+        public virtual DbSet<UserCart> UserCarts { get; set; }
     }
 }

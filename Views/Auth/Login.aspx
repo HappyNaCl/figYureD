@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/main.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="figYureD.Views.Auth.WebForm1" %>
+﻿<%@ Page Title="figYureD | Login" Language="C#" MasterPageFile="~/Views/main.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="figYureD.Views.Auth.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="flex bg-[var(--light-primary)] w-full h-screen overflow-hidden items-center justify-center">
@@ -8,8 +8,15 @@
             <span class="text-[var(--light-secondary)] text-5xl text-center mb-2">Login</span>
             <asp:TextBox placeholder="Email" CssClass="input input-bordered bg-[var(--secondary)] text-white placeholder:text-white focus:outline-[var(--light-secondary)] focus:bg-white focus:text-black duration-100 ease-in-out" ID="TxtEmail" runat="server">  </asp:TextBox>
             <asp:TextBox placeholder="Password" CssClass="input input-bordered bg-[var(--secondary)] text-white placeholder:text-white focus:outline-[var(--light-secondary)] focus:bg-white focus:text-black duration-100 ease-in-out" ID="TxtPassword" TextMode="Password" runat="server"></asp:TextBox>
+            <div class="form-control">
+                <label class="label cursor-pointer">
+                    <span class="label-text text-[var(--light-secondary)] text-lg">Remember Me?</span>
+                    <asp:CheckBox CssClass="checkbox checkbox-lg border-2 border-[var(--secondary)] flex items-center justify-center bg-white" runat="server" />
+                </label>
+            </div>
+            <asp:Label CssClass="label text-red-800 text-md " ID="LblError" Text=" " runat="server" />
             <asp:Button CssClass="btn bg-[var(--secondary)] hover:bg-[var(--light-secondary)] text-white glass w-1/2 self-center mt-4" ID="BtnLogin" runat="server" Text="Login" />
-            <span class="text-center text-[var(--light-secondary)]">Don't have an account? <a class="text-[var(--primary)] hover:underline" href="#">Register Here</a></span>
+            <span class="text-center text-[var(--light-secondary)]">Don't have an account? <a class="text-[var(--primary)] hover:underline" href="/Views/Auth/Register.aspx">Register Here</a></span>
         </div>
     </div>
 </asp:Content>

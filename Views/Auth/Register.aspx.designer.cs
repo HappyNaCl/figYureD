@@ -11,8 +11,17 @@ namespace figYureD.Views.Auth
 {
 
 
-    public partial class Login
+    public partial class Register
     {
+
+        /// <summary>
+        /// TxtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtName;
 
         /// <summary>
         /// TxtEmail control.
@@ -31,6 +40,15 @@ namespace figYureD.Views.Auth
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtPassword;
+
+        /// <summary>
+        /// TxtConfirmPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtConfirmPassword;
 
         /// <summary>
         /// LblError control.

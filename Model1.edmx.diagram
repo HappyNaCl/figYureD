@@ -6,6 +6,19 @@
     <edmx:Diagrams>
       <Diagram DiagramId="ccb41c47eebf4334900bfc84927fdf03" Name="Diagram1">
         <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.FigurineImage" Width="1.5" PointX="7.875" PointY="10" />
+        <EntityTypeShape EntityType="Database1Model.Figurine" Width="1.5" PointX="5.625" PointY="3.25" />
+        <EntityTypeShape EntityType="Database1Model.Manufacturer" Width="1.5" PointX="3.375" PointY="4.125" />
+        <EntityTypeShape EntityType="Database1Model.TransactionDetail" Width="1.5" PointX="7.875" PointY="6" />
+        <EntityTypeShape EntityType="Database1Model.TransactionHeader" Width="1.5" PointX="5.625" PointY="8" />
+        <EntityTypeShape EntityType="Database1Model.UserCart" Width="1.5" PointX="7.875" PointY="2.75" />
+        <AssociationConnector Association="Database1Model.FK__FigurineI__Figur__06CD04F7" />
+        <AssociationConnector Association="Database1Model.FK__Figurines__Manuf__7B5B524B" />
+        <AssociationConnector Association="Database1Model.FK__Transacti__Figur__3587F3E0" />
+        <AssociationConnector Association="Database1Model.FK__UserCart__Figuri__3F115E1A" />
+        <AssociationConnector Association="Database1Model.FK__Transacti__Trans__3493CFA7" />
+        <AssociationConnector Association="Database1Model.FK__Transacti__UserI__25518C17" />
+        <AssociationConnector Association="Database1Model.FK__UserCart__UserId__3E1D39E1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

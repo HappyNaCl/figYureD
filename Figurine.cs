@@ -12,27 +12,32 @@ namespace figYureD
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Figurine
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Figurine()
         {
-            this.TransactionHeaders = new HashSet<TransactionHeader>();
+            this.FigurineImages = new HashSet<FigurineImage>();
+            this.TransactionDetails = new HashSet<TransactionDetail>();
             this.UserCarts = new HashSet<UserCart>();
         }
     
-
         public string Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Series { get; set; }
+        public string Character { get; set; }
+        public int Stock { get; set; }
+        public int Price { get; set; }
+        public string ManufacturerID { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime UpdatedAt { get; set; }
-        public int Balance { get; set; }
-        public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionHeader> TransactionHeaders { get; set; }
+        public virtual ICollection<FigurineImage> FigurineImages { get; set; }
+        public virtual Manufacturer Manufacturer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TransactionDetail> TransactionDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCart> UserCarts { get; set; }
     }

@@ -5,19 +5,200 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FigurineImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="FigurineId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="PictureUrl" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Figurines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="72" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Series" Type="varchar" MaxLength="72" Nullable="false" />
+          <Property Name="Character" Type="varchar" MaxLength="72" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="ManufacturerID" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="36" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="TransactionId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="FigurineId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransactionHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="UserId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserCart">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FigurineId" />
+          </Key>
+          <Property Name="UserId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="FigurineId" Type="char" MaxLength="36" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="char" MaxLength="36" Nullable="false" />
           <Property Name="Username" Type="varchar" MaxLength="24" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="24" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Balance" Type="int" Nullable="false" />
           <Property Name="Role" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK__FigurineI__Figur__39237A9A">
+          <End Role="Figurines" Type="Self.Figurines" Multiplicity="1" />
+          <End Role="FigurineImages" Type="Self.FigurineImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FigurineImages">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Figurines__Manuf__3A179ED3">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="Figurines" Type="Self.Figurines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Figurines">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Figur__3B0BC30C">
+          <End Role="Figurines" Type="Self.Figurines" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Trans__3CF40B7E">
+          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
+          <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionHeader">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionDetails">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__UserI__3DE82FB7">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionHeader">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserCart__Figuri__3BFFE745">
+          <End Role="Figurines" Type="Self.Figurines" Multiplicity="1" />
+          <End Role="UserCart" Type="Self.UserCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurines">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCart">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserCart__UserId__3EDC53F0">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserCart" Type="Self.UserCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="FigurineImages" EntityType="Self.FigurineImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Figurines" EntityType="Self.Figurines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionHeader" EntityType="Self.TransactionHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCart" EntityType="Self.UserCart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FigurineI__Figur__39237A9A" Association="Self.FK__FigurineI__Figur__39237A9A">
+            <End Role="Figurines" EntitySet="Figurines" />
+            <End Role="FigurineImages" EntitySet="FigurineImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Figurines__Manuf__3A179ED3" Association="Self.FK__Figurines__Manuf__3A179ED3">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Figurines" EntitySet="Figurines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Figur__3B0BC30C" Association="Self.FK__Transacti__Figur__3B0BC30C">
+            <End Role="Figurines" EntitySet="Figurines" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Trans__3CF40B7E" Association="Self.FK__Transacti__Trans__3CF40B7E">
+            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+            <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__UserI__3DE82FB7" Association="Self.FK__Transacti__UserI__3DE82FB7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserCart__Figuri__3BFFE745" Association="Self.FK__UserCart__Figuri__3BFFE745">
+            <End Role="Figurines" EntitySet="Figurines" />
+            <End Role="UserCart" EntitySet="UserCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserCart__UserId__3EDC53F0" Association="Self.FK__UserCart__UserId__3EDC53F0">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserCart" EntitySet="UserCart" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -27,16 +208,211 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
           <Property Name="Username" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Role" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Balance" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TransactionHeaders" Relationship="Database1Model.FK__Transacti__UserI__25518C17" FromRole="User" ToRole="TransactionHeader" />
+          <NavigationProperty Name="UserCarts" Relationship="Database1Model.FK__UserCart__UserId__3E1D39E1" FromRole="User" ToRole="UserCart" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="FigurineImages" EntityType="Database1Model.FigurineImage" />
+          <EntitySet Name="Figurines" EntityType="Database1Model.Figurine" />
+          <EntitySet Name="Manufacturers" EntityType="Database1Model.Manufacturer" />
+          <EntitySet Name="TransactionDetails" EntityType="Database1Model.TransactionDetail" />
+          <EntitySet Name="TransactionHeaders" EntityType="Database1Model.TransactionHeader" />
+          <EntitySet Name="UserCarts" EntityType="Database1Model.UserCart" />
+          <AssociationSet Name="FK__FigurineI__Figur__06CD04F7" Association="Database1Model.FK__FigurineI__Figur__06CD04F7">
+            <End Role="Figurine" EntitySet="Figurines" />
+            <End Role="FigurineImage" EntitySet="FigurineImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Figurines__Manuf__7B5B524B" Association="Database1Model.FK__Figurines__Manuf__7B5B524B">
+            <End Role="Manufacturer" EntitySet="Manufacturers" />
+            <End Role="Figurine" EntitySet="Figurines" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Figur__3587F3E0" Association="Database1Model.FK__Transacti__Figur__3587F3E0">
+            <End Role="Figurine" EntitySet="Figurines" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserCart__Figuri__3F115E1A" Association="Database1Model.FK__UserCart__Figuri__3F115E1A">
+            <End Role="Figurine" EntitySet="Figurines" />
+            <End Role="UserCart" EntitySet="UserCarts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__Trans__3493CFA7" Association="Database1Model.FK__Transacti__Trans__3493CFA7">
+            <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+            <End Role="TransactionDetail" EntitySet="TransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transacti__UserI__25518C17" Association="Database1Model.FK__Transacti__UserI__25518C17">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserCart__UserId__3E1D39E1" Association="Database1Model.FK__UserCart__UserId__3E1D39E1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserCart" EntitySet="UserCarts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FigurineImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="FigurineId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="PictureUrl" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Figurine" Relationship="Database1Model.FK__FigurineI__Figur__06CD04F7" FromRole="FigurineImage" ToRole="Figurine" />
+        </EntityType>
+        <EntityType Name="Figurine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="72" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Series" Type="String" Nullable="false" MaxLength="72" FixedLength="false" Unicode="false" />
+          <Property Name="Character" Type="String" Nullable="false" MaxLength="72" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturerID" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="FigurineImages" Relationship="Database1Model.FK__FigurineI__Figur__06CD04F7" FromRole="Figurine" ToRole="FigurineImage" />
+          <NavigationProperty Name="Manufacturer" Relationship="Database1Model.FK__Figurines__Manuf__7B5B524B" FromRole="Figurine" ToRole="Manufacturer" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK__Transacti__Figur__3587F3E0" FromRole="Figurine" ToRole="TransactionDetail" />
+          <NavigationProperty Name="UserCarts" Relationship="Database1Model.FK__UserCart__Figuri__3F115E1A" FromRole="Figurine" ToRole="UserCart" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Figurines" Relationship="Database1Model.FK__Figurines__Manuf__7B5B524B" FromRole="Manufacturer" ToRole="Figurine" />
+        </EntityType>
+        <EntityType Name="TransactionDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="FigurineId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Figurine" Relationship="Database1Model.FK__Transacti__Figur__3587F3E0" FromRole="TransactionDetail" ToRole="Figurine" />
+          <NavigationProperty Name="TransactionHeader" Relationship="Database1Model.FK__Transacti__Trans__3493CFA7" FromRole="TransactionDetail" ToRole="TransactionHeader" />
+        </EntityType>
+        <EntityType Name="TransactionHeader">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK__Transacti__Trans__3493CFA7" FromRole="TransactionHeader" ToRole="TransactionDetail" />
+          <NavigationProperty Name="User" Relationship="Database1Model.FK__Transacti__UserI__25518C17" FromRole="TransactionHeader" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserCart">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FigurineId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="FigurineId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Figurine" Relationship="Database1Model.FK__UserCart__Figuri__3F115E1A" FromRole="UserCart" ToRole="Figurine" />
+          <NavigationProperty Name="User" Relationship="Database1Model.FK__UserCart__UserId__3E1D39E1" FromRole="UserCart" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__FigurineI__Figur__06CD04F7">
+          <End Type="Database1Model.Figurine" Role="Figurine" Multiplicity="1" />
+          <End Type="Database1Model.FigurineImage" Role="FigurineImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FigurineImage">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Figurines__Manuf__7B5B524B">
+          <End Type="Database1Model.Manufacturer" Role="Manufacturer" Multiplicity="1" />
+          <End Type="Database1Model.Figurine" Role="Figurine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Figurine">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Figur__3587F3E0">
+          <End Type="Database1Model.Figurine" Role="Figurine" Multiplicity="1" />
+          <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserCart__Figuri__3F115E1A">
+          <End Type="Database1Model.Figurine" Role="Figurine" Multiplicity="1" />
+          <End Type="Database1Model.UserCart" Role="UserCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Figurine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCart">
+              <PropertyRef Name="FigurineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__Trans__3493CFA7">
+          <End Type="Database1Model.TransactionHeader" Role="TransactionHeader" Multiplicity="1" />
+          <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionHeader">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transacti__UserI__25518C17">
+          <End Type="Database1Model.User" Role="User" Multiplicity="1" />
+          <End Type="Database1Model.TransactionHeader" Role="TransactionHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionHeader">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserCart__UserId__3E1D39E1">
+          <End Type="Database1Model.User" Role="User" Multiplicity="1" />
+          <End Type="Database1Model.UserCart" Role="UserCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserCart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -46,12 +422,80 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Database1Model.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FigurineImages">
+            <EntityTypeMapping TypeName="Database1Model.FigurineImage">
+              <MappingFragment StoreEntitySet="FigurineImages">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+                <ScalarProperty Name="FigurineId" ColumnName="FigurineId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Figurines">
+            <EntityTypeMapping TypeName="Database1Model.Figurine">
+              <MappingFragment StoreEntitySet="Figurines">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Character" ColumnName="Character" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="Database1Model.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionDetails">
+            <EntityTypeMapping TypeName="Database1Model.TransactionDetail">
+              <MappingFragment StoreEntitySet="TransactionDetails">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FigurineId" ColumnName="FigurineId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionHeaders">
+            <EntityTypeMapping TypeName="Database1Model.TransactionHeader">
+              <MappingFragment StoreEntitySet="TransactionHeader">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCarts">
+            <EntityTypeMapping TypeName="Database1Model.UserCart">
+              <MappingFragment StoreEntitySet="UserCart">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="FigurineId" ColumnName="FigurineId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -70,7 +514,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
