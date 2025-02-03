@@ -41,6 +41,12 @@ namespace figYureD.App_Start
                 "admin/manufacturer",
                 "~/Views/Admin/AdminManufacturer.aspx"
                 );
+
+            routes.MapPageRoute(
+                "EditManufacturerPage",
+                "admin/manufacturer/{id}",
+                "~/Views/Admin/AdminEditManufacturer.aspx"
+                );
         }
     }
 }

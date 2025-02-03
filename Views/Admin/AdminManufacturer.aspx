@@ -6,13 +6,13 @@
                 <span class="text-5xl text-black">Manufacturer</span>
                 <label for="add-modal" class="btn border-none text-white text-lg hover:bg-[var(--light-secondary)] bg-[var(--secondary)]">Add New Manufacturer</label>
             </div>
-            <asp:GridView CssClass="table text-lg" ID="GVManufacturer" runat="server" AutoGenerateColumns="False">
+            <asp:GridView CssClass="table text-lg" ID="GVManufacturer" runat="server" AutoGenerateColumns="False" OnRowEditing="GVManufacturer_RowEditing" OnRowDeleting="GVManufacturer_RowDeleting">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" SortExpression="Id"></asp:BoundField>
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name"></asp:BoundField>
                     <asp:BoundField DataField="CreatedAt" HeaderText="Created At" SortExpression="CreatedAt"></asp:BoundField>
+                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" HeaderText="Actions"></asp:CommandField>
                 </Columns>
-            
             </asp:GridView>
         </div>
     </div>
@@ -32,4 +32,5 @@
             </div>
         </div>
     </div>
+    <input type="checkbox" id="edit-modal" class="modal-toggle" />
 </asp:Content>

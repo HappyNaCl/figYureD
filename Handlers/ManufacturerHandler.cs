@@ -22,5 +22,20 @@ namespace figYureD.Handlers
         {
             return repo.GetManufacturers();
         }
+
+        public Manufacturer GetManufacturer(String id)
+        {
+            return repo.GetManufacturer(id);
+        }
+
+        public bool UpdateManufacturer(String id, String name)
+        {
+            return repo.UpdateManufacturer(id, name);
+        }
+
+        public bool DeleteManufacturer(String id)
+        {
+            return repo.DeleteManufacturer(id);
+        }
     }
 }

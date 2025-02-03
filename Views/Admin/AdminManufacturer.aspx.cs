@@ -13,11 +13,9 @@ namespace figYureD.Views.Admin
         private ManufacturerController controller = new ManufacturerController();
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Manufacturer> manufacturers = controller.GetManufacturers();
-            if(manufacturers.Count != 0)
+            if (!IsPostBack)
             {
-                GVManufacturer.DataSource = manufacturers;
-                GVManufacturer.DataBind();
+                UpdateManufacturerList();
             }
         }
 
@@ -27,11 +25,39 @@ namespace figYureD.Views.Admin
             String res = controller.InsertManufacturer(name);
             if (res == "SUCCESS")
             {
-                Response.Redirect("/admin/manufacturer");
+                UpdateManufacturerList();
             }
             else
             {
                 LblError.Text = res;
+            }
+        }
+
+        protected void GVManufacturer_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewRow row = GVManufacturer.Rows[e.NewEditIndex];
+            String id = row.Cells[0].Text;
+            Response.Redirect("/admin/manufacturer/" + id);
+        }
+
+        protected void GVManufacturer_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            GridViewRow row = GVManufacturer.Rows[e.RowIndex];
+            String id = row.Cells[0].Text;
+            if (controller.DeleteManufacturer(id) == "SUCCESS")
+            {
+                UpdateManufacturerList();
+            }
+        }
+
+
+        private void UpdateManufacturerList()
+        {
+            List<Manufacturer> manufacturers = controller.GetManufacturers();
+            if (manufacturers.Count != 0)
+            {
+                GVManufacturer.DataSource = manufacturers;
+                GVManufacturer.DataBind();
             }
         }
     }

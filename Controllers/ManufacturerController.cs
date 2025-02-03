@@ -26,6 +26,45 @@ namespace figYureD.Controllers
             return "SUCCESS";
         }
 
+        public Manufacturer GetManufacturer(String id)
+        {
+            return handler.GetManufacturer(id);
+        }
+
+        public String UpdateManufacturer(String id, String name)
+        {
+            if(handler.GetManufacturer(id) == null)
+            {
+                return "No manufacturer found!";
+            }
+
+            if(handler.UpdateManufacturer(id, name))
+            {
+                return "SUCCESS";
+            }
+            else
+            {
+                return "Update Failed!";
+            }
+        }
+
+        public String DeleteManufacturer(String id)
+        {
+            if(handler.GetManufacturer(id) == null)
+            {
+                return "No manufacturer found!";
+            }
+
+            if (handler.DeleteManufacturer(id))
+            {
+                return "SUCCESS";
+            }
+            else
+            {
+                return "Delete Failed!";
+            }
+        }
+
         public List<Manufacturer> GetManufacturers()
         {
             return handler.GetManufacturers();
