@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using figYureD.Controllers;
 using figYureD.Factories;
 using figYureD.Repositories;
 
@@ -11,8 +12,7 @@ namespace figYureD.Views.Auth
 {
     public partial class Register : System.Web.UI.Page
     {
-        private UserFactory uf = new UserFactory();
-        private UserRepository ur = new UserRepository();
+        private UserController controller = new UserController();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,40 +25,15 @@ namespace figYureD.Views.Auth
             String password = TxtPassword.Text.Trim();
             String confirmPassword = TxtConfirmPassword.Text.Trim();
             
-            if (name.Length == 0 || email.Length == 0 || password.Length == 0 || confirmPassword.Length == 0)
+            String errorMsg = controller.InsertUser(name, email, password, confirmPassword);
+            if (errorMsg == "SUCCESS")
             {
-                LblError.Text = "Please fill all fields!";
-                return;
+                Response.Redirect("Login.aspx");
             }
-            if (name.Length < 8 || name.Length > 20)
+            else
             {
-                LblError.Text = "Name must be between 8 and 20 characters!";
-                return;
+                LblError.Text = errorMsg;
             }
-            if (ur.IsEmailUnique(email) == false)
-            {
-                LblError.Text = "Email already exists!";
-                return;
-            }
-            if (email.IndexOf('@') == -1 || !email.Contains(".com"))
-            {
-                LblError.Text = "Invalid email!";
-                return;
-            }
-            if (password.Length < 8 || password.Length > 20)
-            {
-                LblError.Text = "Password must be between 8 and 20 characters!";
-                return;
-            }
-            if (password != confirmPassword)
-            {
-                LblError.Text = "Passwords do not match!";
-                return;
-            }
-
-            User user = uf.ExtractUser(name, email, password);
-            ur.InsertUser(user);
-            Response.Redirect("/Views/Auth/Login.aspx");
         }
     }
 }

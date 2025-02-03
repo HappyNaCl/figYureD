@@ -23,6 +23,24 @@ namespace figYureD.App_Start
                 "register",
                 "~/Views/Auth/Register.aspx"
                 );
+
+            routes.MapPageRoute(
+                "AdminDashboard",
+                "admin/dashboard",
+                "~/Views/Admin/AdminDashboard.aspx"
+                );
+
+            routes.MapPageRoute(
+                "AddProductPage",
+                "admin/products",
+                "~/Views/Admin/AdminProduct.aspx"
+                );
+
+            routes.MapPageRoute(
+                "AddManufacturerPage",
+                "admin/manufacturer",
+                "~/Views/Admin/AdminManufacturer.aspx"
+                );
         }
     }
 }

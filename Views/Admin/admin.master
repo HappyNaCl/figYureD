@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/main.Master" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="figYureD.Views.Admin.AdminMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <nav class="h-20 bg-[var(--light-primary)] flex flex-row items-center justify-around px-24">
+        <div class="flex-1 text-[var(--secondary)] text-5xl">
+            <span>figYureD</span>
+        </div>
+        <div class="flex-1">
+            <ul class="text-black text-2xl menu-horizontal gap-24 bg-[var(--light-primary)]">
+                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Home</a></li>
+                <li>
+                    <details class="bg-[var(--light-primary)]">
+                        <summary>Product</summary>
+                        <ul class="flex flex-col bg-[var(--light-primary)] rounded-box">
+                            <li class="text-md py-2 hover:bg-[var(--primary)] rounded-box px-4"><a href="#">View Product</a></li>
+                            <li class="text-md py-2 hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Add Product</a></li>
+                            <li class="text-md py-2 hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Delete Product</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <details class="bg-[var(--light-primary)]">
+                        <summary>User</summary>
+                        <ul class="flex flex-col bg-[var(--light-primary)] rounded-box">
+                            <li class="text-md py-2 hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Add User</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <asp:ContentPlaceHolder ID="AdminContent" runat="server" />
+</asp:Content>

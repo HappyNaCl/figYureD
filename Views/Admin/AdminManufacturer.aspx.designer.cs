@@ -7,39 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace figYureD.Views.Auth
+namespace figYureD.Views.Admin
 {
 
 
-    public partial class Login
+    public partial class AdminManufacturer
     {
 
         /// <summary>
-        /// TxtEmail control.
+        /// GVManufacturer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
+        protected global::System.Web.UI.WebControls.GridView GVManufacturer;
 
         /// <summary>
-        /// TxtPassword control.
+        /// TxtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtPassword;
-
-        /// <summary>
-        /// CbRememberMe control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CbRememberMe;
+        protected global::System.Web.UI.WebControls.TextBox TxtName;
 
         /// <summary>
         /// LblError control.
@@ -51,12 +42,12 @@ namespace figYureD.Views.Auth
         protected global::System.Web.UI.WebControls.Label LblError;
 
         /// <summary>
-        /// BtnLogin control.
+        /// SubmitBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnLogin;
+        protected global::System.Web.UI.WebControls.Button SubmitBtn;
     }
 }

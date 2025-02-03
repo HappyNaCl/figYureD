@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace figYureD.Views
+namespace figYureD.Views.Admin
 {
-    public partial class MainMaster : System.Web.UI.MasterPage
+    public partial class AdminMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

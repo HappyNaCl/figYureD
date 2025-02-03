@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using figYureD.Controllers;
 using figYureD.Repositories;
 
 namespace figYureD.Views.Auth
 {
     public partial class Login : System.Web.UI.Page
     {
-        UserRepository ur = new UserRepository();
+        AuthController controller = new AuthController();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,20 +22,23 @@ namespace figYureD.Views.Auth
         {
             String email = TxtEmail.Text.Trim();
             String password = TxtPassword.Text.Trim();
-            if (email.Length == 0 || password.Length == 0)
+            bool rememberMe = CbRememberMe.Checked;
+            String res = controller.Login(email, password, rememberMe);
+            if(res.Equals("SUCCESS"))
             {
-                LblError.Text = "Please fill all fields!";
-                return;
+                if (Request.Cookies["user_cookie"]["role"].Equals("admin"))
+                {
+                    Response.Redirect("~/Views/Admin/Home.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Views/User/Home.aspx");
+                }
             }
-           
-            User user = ur.GetUser(email, password);
-            if (user == null)
+            else
             {
-                LblError.Text = "Invalid email or password!";
-                return;
+                LblError.Text = res;
             }
-            Session["user"] = user;
-            Response.Redirect("~/Views/Home/Index.aspx");
         }
     }
 }

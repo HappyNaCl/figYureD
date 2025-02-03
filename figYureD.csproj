@@ -90,11 +90,18 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\Admin\AdminManufacturer.aspx" />
+    <Content Include="Views\Admin\AdminProduct.aspx" />
+    <Content Include="Views\Admin\AdminDashboard.aspx" />
     <Content Include="Views\Auth\Login.aspx" />
     <Content Include="Views\Auth\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Factories\ManufacturerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -106,6 +113,8 @@
     <Compile Include="FigurineImage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ManufacturerHandler.cs" />
+    <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -125,6 +134,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ManufacturerRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="TransactionDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -137,6 +147,34 @@
     </Compile>
     <Compile Include="UserCart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\admin.master.cs">
+      <DependentUpon>admin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\admin.master.designer.cs">
+      <DependentUpon>admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AdminManufacturer.aspx.cs">
+      <DependentUpon>AdminManufacturer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AdminManufacturer.aspx.designer.cs">
+      <DependentUpon>AdminManufacturer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AdminProduct.aspx.cs">
+      <DependentUpon>AdminProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AdminProduct.aspx.designer.cs">
+      <DependentUpon>AdminProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Auth\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -170,6 +208,7 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\main.Master" />
+    <Content Include="Views\Admin\admin.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -181,8 +220,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Handlers\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -199,7 +237,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53436</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44370/</IISUrl>
+          <IISUrl>https://localhost:44371/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
