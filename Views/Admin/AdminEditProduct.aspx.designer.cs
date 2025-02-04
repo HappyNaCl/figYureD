@@ -11,17 +11,8 @@ namespace figYureD.Views.Admin
 {
 
 
-    public partial class AdminProduct
+    public partial class AdminEditProduct
     {
-
-        /// <summary>
-        /// GVProducts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GVProducts;
 
         /// <summary>
         /// TxtProductName control.
@@ -78,22 +69,31 @@ namespace figYureD.Views.Admin
         protected global::System.Web.UI.WebControls.TextBox TxtProductQuantity;
 
         /// <summary>
-        /// TxtImageUrl control.
+        /// PHTextboxes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtImageUrl;
+        protected global::System.Web.UI.WebControls.PlaceHolder PHTextboxes;
 
         /// <summary>
-        /// DDLManufacturer control.
+        /// BtnAddTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLManufacturer;
+        protected global::System.Web.UI.WebControls.Button BtnAddTb;
+
+        /// <summary>
+        /// BtnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnUpdate;
 
         /// <summary>
         /// LblError control.
@@ -103,14 +103,5 @@ namespace figYureD.Views.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblError;
-
-        /// <summary>
-        /// SubmitBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SubmitBtn;
     }
 }

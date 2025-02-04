@@ -25,6 +25,7 @@ namespace figYureD.Views.Admin
             String res = controller.InsertManufacturer(name);
             if (res == "SUCCESS")
             {
+                Response.Redirect("/admin/manufacturers");
                 UpdateManufacturerList();
             }
             else
@@ -46,6 +47,7 @@ namespace figYureD.Views.Admin
             String id = row.Cells[0].Text;
             if (controller.DeleteManufacturer(id) == "SUCCESS")
             {
+                Response.Redirect("/admin/manufacturer");
                 UpdateManufacturerList();
             }
         }
