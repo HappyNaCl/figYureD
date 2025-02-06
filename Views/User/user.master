@@ -1,0 +1,18 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Views/main.Master" AutoEventWireup="true" CodeBehind="user.master.cs" Inherits="figYureD.Views.User.UserMaster" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <nav class="h-20 bg-[var(--light-primary)] flex flex-row items-center justify-around px-24">
+    <div class="flex-1 text-[var(--secondary)] text-5xl">
+        <span>figYureD</span>
+    </div>
+    <div class="flex-1">
+        <ul class="text-black text-2xl menu-horizontal gap-4 bg-[var(--light-primary)]">
+            <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/products">Home</a></li>
+            <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Cart</a></li>
+            <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">History</a></li>
+        </ul>
+    </div>
+</nav>
+<asp:ContentPlaceHolder ID="UserContent" runat="server" />
+</asp:Content>

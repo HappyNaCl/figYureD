@@ -6,10 +6,9 @@
         </div>
         <div class="flex-1">
             <ul class="text-black text-2xl menu-horizontal gap-4 bg-[var(--light-primary)]">
-                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Home</a></li>
-                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Products</a></li>
-                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">User</a></li>
-                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">Manufacturer</a></li>
+                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin">Home</a></li>
+                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin/products">Products</a></li>
+                <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin/manufacturers">Manufacturer</a></li>
             </ul>
         </div>
     </nav>

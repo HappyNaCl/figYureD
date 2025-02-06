@@ -38,7 +38,7 @@ namespace figYureD.Views.Admin
         {
             GridViewRow row = GVManufacturer.Rows[e.NewEditIndex];
             String id = row.Cells[0].Text;
-            Response.Redirect("/admin/manufacturer/" + id);
+            Response.Redirect("/admin/manufacturers/" + id);
         }
 
         protected void GVManufacturer_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -47,7 +47,7 @@ namespace figYureD.Views.Admin
             String id = row.Cells[0].Text;
             if (controller.DeleteManufacturer(id) == "SUCCESS")
             {
-                Response.Redirect("/admin/manufacturer");
+                Response.Redirect("/admin/manufacturers");
                 UpdateManufacturerList();
             }
         }

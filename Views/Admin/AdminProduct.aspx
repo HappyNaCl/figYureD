@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/admin.master" AutoEventWireup="true" CodeBehind="AdminProduct.aspx.cs" Inherits="figYureD.Views.Admin.AdminProduct" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
-    <div class="flex flex-col p-24 w-full h-screen items-center text-black">
+    <div class="flex flex-col p-24 w-full h-fit items-center text-black">
         <div class="flex flex-col gap-12 w-6/7">
             <div class="flex flex-row justify-evenly items-center">
                 <span class="text-5xl text-black">Products</span>
                 <label for="add-modal" class="btn border-none text-white text-lg hover:bg-[var(--light-secondary)] bg-[var(--secondary)]">Add Products</label>
             </div>
-            <asp:GridView OnRowDeleting="GVProducts_RowDeleting" CssClass="table zebra" ID="GVProducts" runat="server" AutoGenerateColumns="False" AllowPaging="True">
+            <asp:GridView OnRowDeleting="GVProducts_RowDeleting" OnRowEditing="GVProducts_RowEditing" CssClass="table zebra" ID="GVProducts" runat="server" AutoGenerateColumns="False" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id"></asp:BoundField>
                     <asp:ImageField ControlStyle-CssClass="max-w-[70%]" DataImageUrlField="ImageUrl" HeaderText="Image"></asp:ImageField>

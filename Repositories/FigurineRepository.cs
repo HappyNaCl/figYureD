@@ -15,6 +15,18 @@ namespace figYureD.Repositories
             db.SaveChanges();
         }
         
+        public bool UpdateFigurine(String id, String name, String desc, String character, String series, int price, int quantity)
+        {
+            Figurine figurine = db.Figurines.Find(id);
+            figurine.Name = name;
+            figurine.Description = desc;
+            figurine.Character = character;
+            figurine.Series = series;
+            figurine.Price = price;
+            figurine.Stock = quantity;
+            return db.SaveChanges() != 0;
+        }
+
         public Figurine GetFigurine(String id)
         {
             return db.Figurines.Find(id);

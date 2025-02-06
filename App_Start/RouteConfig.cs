@@ -26,7 +26,7 @@ namespace figYureD.App_Start
 
             routes.MapPageRoute(
                 "AdminDashboard",
-                "admin/dashboard",
+                "admin",
                 "~/Views/Admin/AdminDashboard.aspx"
                 );
 
@@ -44,14 +44,20 @@ namespace figYureD.App_Start
 
             routes.MapPageRoute(
                 "AddManufacturerPage",
-                "admin/manufacturer",
+                "admin/manufacturers",
                 "~/Views/Admin/AdminManufacturer.aspx"
                 );
 
             routes.MapPageRoute(
                 "EditManufacturerPage",
-                "admin/manufacturer/{id}",
+                "admin/manufacturers/{id}",
                 "~/Views/Admin/AdminEditManufacturer.aspx"
+                );
+
+            routes.MapPageRoute(
+                "ProductPage",
+                "products",
+                "~/Views/User/UserProduct.aspx"
                 );
         }
     }

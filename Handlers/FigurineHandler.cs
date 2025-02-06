@@ -19,6 +19,11 @@ namespace figYureD.Handlers
             return figurine;
         }
 
+        public bool UpdateFigurine(String id, String name, String desc, String character, String series, int price, int quantity)
+        {
+           return repo.UpdateFigurine(id, name, desc, character, series, price, quantity);
+        }
+
         public Figurine GetFigurine(String id)
         {
             return repo.GetFigurine(id);

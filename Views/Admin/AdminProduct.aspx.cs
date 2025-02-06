@@ -105,7 +105,7 @@ namespace figYureD.Views.Admin
                 Stock = f.Stock;
                 Series = f.Series;
                 Manufacturer = (new ManufacturerController()).GetManufacturer(f.ManufacturerID).Name;
-                ImageUrl = (new FigurineImageController()).GetFigurineImage(f.Id);
+                ImageUrl = (new FigurineImageController()).GetFigurineImage(f.Id).PictureUrl;
             }
 
         }

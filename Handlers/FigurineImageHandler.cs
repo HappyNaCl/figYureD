@@ -18,14 +18,30 @@ namespace figYureD.Handlers
             repo.InsertFigurineImage(figurineImage);
         }
 
+        public bool UpdateFigurineImages(String figurineId, List<String> imageUrls)
+        {
+            List<FigurineImage> figurineImages = new List<FigurineImage>();
+            foreach (String imageUrl in imageUrls)
+            {
+                FigurineImage figurineImage = factory.ExtractFigurineImage(figurineId, imageUrl);
+                figurineImages.Add(figurineImage);
+            }
+            return repo.UpdateFigurineImages(figurineImages);
+        }
+
         public void DeleteAllFigurineImageById(String figurineId)
         {
             repo.DeleteAllFigurineImageById(figurineId);
         }
 
-        public String GetFigurineImage(String figurineId)
+        public FigurineImage GetFigurineImage(String figurineId)
         {
             return repo.GetFigurineImage(figurineId);
+        }
+
+        public List<FigurineImage> GetFigurineImages(String figurineId)
+        {
+            return repo.GetFigurineImages(figurineId);
         }
     }
 }

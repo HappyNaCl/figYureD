@@ -97,6 +97,8 @@
     <Content Include="Views\Admin\AdminDashboard.aspx" />
     <Content Include="Views\Auth\Login.aspx" />
     <Content Include="Views\Auth\Register.aspx" />
+    <Content Include="Views\User\UserCart.aspx" />
+    <Content Include="Views\User\UserProduct.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +148,7 @@
     <Compile Include="Repositories\FigurineRepository.cs" />
     <Compile Include="Repositories\ManufacturerRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\ProductService.cs" />
     <Compile Include="TransactionDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -221,6 +224,27 @@
     <Compile Include="Views\main.Master.designer.cs">
       <DependentUpon>main.Master</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\user.master.cs">
+      <DependentUpon>user.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\user.master.designer.cs">
+      <DependentUpon>user.master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserCart.aspx.cs">
+      <DependentUpon>UserCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserCart.aspx.designer.cs">
+      <DependentUpon>UserCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\UserProduct.aspx.cs">
+      <DependentUpon>UserProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\User\UserProduct.aspx.designer.cs">
+      <DependentUpon>UserProduct.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model1.edmx">
@@ -233,6 +257,7 @@
     <None Include="packages.config" />
     <Content Include="Views\main.Master" />
     <Content Include="Views\Admin\admin.master" />
+    <Content Include="Views\User\user.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -243,9 +268,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

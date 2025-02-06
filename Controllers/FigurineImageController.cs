@@ -9,7 +9,7 @@ namespace figYureD.Controllers
     public class FigurineImageController
     {
         private FigurineImageHandler handler = new FigurineImageHandler();
-        public String GetFigurineImage(String figurineId)
+        public FigurineImage GetFigurineImage(String figurineId)
         {
             return handler.GetFigurineImage(figurineId);
         }
