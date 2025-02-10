@@ -11,7 +11,21 @@ namespace figYureD.Views.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null || Request.Cookies["user_cookie"] == null)
+            {
+                Response.Redirect("/login");
+            }
+            else if (!(Session["user"] as figYureD.User).Role.Equals("Admin"))
+            {
+                Response.Redirect("/products");
+            }
+        }
 
+        protected void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Request.Cookies["user_cookie"].Expires = DateTime.Now.AddDays(-1);
+            Session.Remove("user");
+            Response.Redirect("/login");
         }
     }
 }

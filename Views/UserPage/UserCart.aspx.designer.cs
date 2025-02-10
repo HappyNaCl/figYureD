@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace figYureD.Views.User
+namespace figYureD.Views.UserPage
 {
 
 
-    public partial class UserProduct
+    public partial class UserCartPage
     {
 
         /// <summary>
-        /// RepeaterProducts control.
+        /// GvCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterProducts;
+        protected global::System.Web.UI.WebControls.GridView GvCart;
     }
 }

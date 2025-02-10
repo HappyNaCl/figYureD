@@ -15,7 +15,7 @@
                 </label>
             </div>
             <asp:Label CssClass="label text-red-800 text-md " ID="LblError" Text=" " runat="server" />
-            <asp:Button CssClass="btn bg-[var(--secondary)] hover:bg-[var(--light-secondary)] text-white glass w-1/2 self-center mt-4" ID="BtnLogin" runat="server" Text="Login" />
+            <asp:Button CssClass="btn bg-[var(--secondary)] hover:bg-[var(--light-secondary)] text-white glass w-1/2 self-center mt-4" ID="BtnLogin" runat="server" OnClick="BtnLogin_Click" Text="Login" />
             <span class="text-center text-[var(--light-secondary)]">Don't have an account? <a class="text-[var(--primary)] hover:underline" href="/register">Register Here</a></span>
         </div>
     </div>

@@ -26,13 +26,13 @@ namespace figYureD.Views.Auth
             String res = controller.Login(email, password, rememberMe);
             if(res.Equals("SUCCESS"))
             {
-                if (Request.Cookies["user_cookie"]["role"].Equals("admin"))
+                if (Request.Cookies["user_cookie"]["role"].Equals("Admin"))
                 {
-                    Response.Redirect("~/Views/Admin/Home.aspx");
+                    Response.Redirect("/admin");
                 }
                 else
                 {
-                    Response.Redirect("~/Views/User/Home.aspx");
+                    Response.Redirect("/products");
                 }
             }
             else

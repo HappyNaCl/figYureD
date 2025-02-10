@@ -9,6 +9,9 @@
                 <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin">Home</a></li>
                 <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin/products">Products</a></li>
                 <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/admin/manufacturers">Manufacturer</a></li>
+                <li class="hover:bg-[var(--primary)] rounded-box px-4">
+                    <asp:Button ID="BtnLogout" OnClick="BtnLogout_Click" Text="Logout" runat="server" />
+                </li>
             </ul>
         </div>
     </nav>

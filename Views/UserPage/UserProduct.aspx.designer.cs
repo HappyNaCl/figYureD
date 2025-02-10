@@ -7,29 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace figYureD.Views.Admin
+namespace figYureD.Views.UserPage
 {
 
 
-    public partial class AdminMaster
+    public partial class UserProduct
     {
 
         /// <summary>
-        /// BtnLogout control.
+        /// rptProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnLogout;
-
-        /// <summary>
-        /// AdminContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder AdminContent;
+        protected global::System.Web.UI.WebControls.Repeater rptProducts;
     }
 }

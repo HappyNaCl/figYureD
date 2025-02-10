@@ -22,15 +22,16 @@ namespace figYureD.Controllers
             if (user != null)
             {
                 HttpContext.Current.Session["user"] = user;
+                HttpCookie cookie = new HttpCookie("user_cookie");
+                cookie.Values.Add("id", user.Id);
+                cookie.Values.Add("username", user.Username);
+                cookie.Values.Add("role", user.Role);
+                cookie.Expires = DateTime.Now.AddDays(1);
                 if (rememberMe)
                 {
-                    HttpCookie cookie = new HttpCookie("user_cookie");
-                    cookie.Values.Add("id", user.Id);
-                    cookie.Values.Add("username", user.Username);
-                    cookie.Values.Add("role", user.Role);
                     cookie.Expires = DateTime.Now.AddDays(3);
-                    HttpContext.Current.Response.Cookies.Add(cookie);
                 }
+                HttpContext.Current.Response.Cookies.Add(cookie);
                 return "SUCCESS";
             }
             else return "Invalid Credentials!";

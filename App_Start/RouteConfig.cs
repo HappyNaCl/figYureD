@@ -57,7 +57,13 @@ namespace figYureD.App_Start
             routes.MapPageRoute(
                 "ProductPage",
                 "products",
-                "~/Views/User/UserProduct.aspx"
+                "~/Views/UserPage/UserProduct.aspx"
+                );
+
+            routes.MapPageRoute(
+                "CartPage",
+                "cart",
+                "~/Views/UserPage/UserCart.aspx"
                 );
         }
     }

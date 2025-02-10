@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using figYureD.Controllers;
@@ -26,15 +27,12 @@ namespace figYureD.Services
         public Manufacturer GetManufacturerByFigurineId(String figurineId)
         {
             Figurine figurine = figurineHandler.GetFigurine(figurineId);
+            if(figurine == null)
+            {
+                Console.WriteLine("Figurine not found");
+            }
             return manufacturerHandler.GetManufacturer(figurine.ManufacturerID);
         }
 
-    }
-
-    public class ProductViewMode
-    {
-        public Figurine Figurine { get; set; }
-        public List<FigurineImage> FigurineImages { get; set; }
-        public Manufacturer Manufacturer { get; set; }
     }
 }
