@@ -94,11 +94,12 @@
     <Content Include="Views\Admin\AdminEditProduct.aspx" />
     <Content Include="Views\Admin\AdminManufacturer.aspx" />
     <Content Include="Views\Admin\AdminProduct.aspx" />
-    <Content Include="Views\Admin\AdminDashboard.aspx" />
+    <Content Include="Views\Admin\AdminTransaction.aspx" />
     <Content Include="Views\Auth\Login.aspx" />
     <Content Include="Views\Auth\Register.aspx" />
     <Content Include="Views\UserPage\UserCart.aspx" />
     <Content Include="Views\UserPage\UserProduct.aspx" />
+    <Content Include="Views\UserPage\UserTransaction.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,11 +108,14 @@
     <Compile Include="Controllers\FigurineController.cs" />
     <Compile Include="Controllers\FigurineImageController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\FigurineFactory.cs" />
     <Compile Include="Factories\FigurineImageFactory.cs" />
     <Compile Include="Factories\ManufacturerFactory.cs" />
+    <Compile Include="Factories\TransactionDetailFactory.cs" />
+    <Compile Include="Factories\TransactionFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -127,6 +131,7 @@
     <Compile Include="Handlers\FigurineHandler.cs" />
     <Compile Include="Handlers\FigurineImageHandler.cs" />
     <Compile Include="Handlers\ManufacturerHandler.cs" />
+    <Compile Include="Handlers\TransactionHandler.cs" />
     <Compile Include="Handlers\UserHandler.cs" />
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -151,7 +156,9 @@
     <Compile Include="Repositories\FigurineImageRepository.cs" />
     <Compile Include="Repositories\FigurineRepository.cs" />
     <Compile Include="Repositories\ManufacturerRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\CheckoutService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="TransactionDetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -200,12 +207,12 @@
     <Compile Include="Views\Admin\AdminProduct.aspx.designer.cs">
       <DependentUpon>AdminProduct.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\AdminDashboard.aspx.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    <Compile Include="Views\Admin\AdminTransaction.aspx.cs">
+      <DependentUpon>AdminTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Admin\AdminDashboard.aspx.designer.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    <Compile Include="Views\Admin\AdminTransaction.aspx.designer.cs">
+      <DependentUpon>AdminTransaction.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Auth\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -248,6 +255,13 @@
     </Compile>
     <Compile Include="Views\UserPage\UserProduct.aspx.designer.cs">
       <DependentUpon>UserProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserPage\UserTransaction.aspx.cs">
+      <DependentUpon>UserTransaction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\UserPage\UserTransaction.aspx.designer.cs">
+      <DependentUpon>UserTransaction.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

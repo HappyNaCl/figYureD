@@ -16,6 +16,17 @@ namespace figYureD.Repositories
                     select crt).ToList();
         }
 
+        public void RemoveAllCarts(List<UserCart> cartItems)
+        {
+            foreach(UserCart items in cartItems)
+            {
+                (from cart in db.UserCarts
+                 where cart.FigurineId == items.FigurineId &&
+                 cart.UserId == items.UserId
+                 select cart).ToList().ForEach(x => db.UserCarts.Remove(x));
+                db.SaveChanges();
+            }
+        }
 
         public UserCart GetUserCart(String figurineId, String userId)
         {

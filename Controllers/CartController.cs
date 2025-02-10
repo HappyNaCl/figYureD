@@ -14,9 +14,20 @@ namespace figYureD.Controllers
         {
             return handler.GetUserCarts(userId);
         }
+
+        public UserCart GetUserCart(String userId, String figurineId)
+        {
+            return handler.GetUserCart(figurineId, userId);
+        }
+
         public void AddToCart(String figurineId, String userId)
         {
             handler.InsertCart(figurineId, userId);
+        }
+        
+        public void RemoveAllCart(List<UserCart> cartItems)
+        {
+            handler.RemoveAllCart(cartItems);
         }
 
         public void RemoveFromCart(String figurineId, String userId)

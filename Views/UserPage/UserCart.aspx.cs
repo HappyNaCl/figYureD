@@ -14,6 +14,7 @@ namespace figYureD.Views.UserPage
         private figYureD.User currentUser;
         private ProductService service = new ProductService();
         private CartController controller = new CartController();
+        private CheckoutService coService = new CheckoutService();
         protected void Page_Load(object sender, EventArgs e)
         {
             currentUser = (figYureD.User)Session["user"];
@@ -57,6 +58,22 @@ namespace figYureD.Views.UserPage
             {
                 BindCart();
             }
+        }
+
+        protected void BtnCheckout_Click(object sender, EventArgs e)
+        {
+            List<UserCart> carts = new List<UserCart>();
+            foreach (GridViewRow row in GvCart.Rows)
+            {
+                CheckBox cbCheckout = (CheckBox)row.FindControl("cbCheckout");
+                if(cbCheckout != null && cbCheckout.Checked)
+                {
+                    String figurineId = ((HiddenField)row.FindControl("hfProductId")).Value;
+                    carts.Add(controller.GetUserCart(currentUser.Id, figurineId));
+                }
+            }
+            coService.CheckOut(carts);
+            Response.Redirect("/transactions");
         }
 
         private class CartViewModel

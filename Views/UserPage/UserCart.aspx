@@ -27,7 +27,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:Button Text="Checkout" CssClass="btn bg-[var(--secondary)] hover:bg-[var(--light-secondary)] text-white glass w-1/2 self-center mt-4" runat="server" />
+        <asp:Button Text="Checkout" OnClick="BtnCheckout_Click" CssClass="btn bg-[var(--secondary)] hover:bg-[var(--light-secondary)] text-white glass w-1/2 self-center mt-4" runat="server" />
     </div>
 </div>
 </asp:Content>

@@ -10,7 +10,7 @@
         <ul class="text-black text-2xl menu-horizontal gap-4 bg-[var(--light-primary)]">
             <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/products">Home</a></li>
             <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/cart">Cart</a></li>
-            <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="#">History</a></li>
+            <li class="hover:bg-[var(--primary)] rounded-box px-4"><a href="/transactions">History</a></li>
             <li class="hover:bg-[var(--primary)] rounded-box px-4">
                 <asp:Button OnClick="BtnLogout_Click" Text="Logout" runat="server" />
             </li>

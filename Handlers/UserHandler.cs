@@ -17,6 +17,11 @@ namespace figYureD.Handlers
             repo.InsertUser(user);
         }
 
+        public figYureD.User GetUser(String userId)
+        {
+            return repo.GetUser(userId);
+        }
+
         public User GetUser(String email, String password)
         {
            return repo.GetUser(email, password);

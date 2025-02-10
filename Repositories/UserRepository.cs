@@ -24,6 +24,13 @@ namespace figYureD.Repositories
             return user;
         }
 
+        public User GetUser(String userId)
+        {
+            return (from usr in db.Users
+                    where usr.Id == userId
+                    select usr).FirstOrDefault();
+        }
+
         public bool IsEmailUnique(String email)
         {
             User user = (from usr in db.Users

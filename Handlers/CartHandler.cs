@@ -18,7 +18,11 @@ namespace figYureD.Handlers
             repo.InsertItemToCart(cart);
             return true;
         }
-
+        
+        public void RemoveAllCart(List<UserCart> cartItems)
+        {
+            repo.RemoveAllCarts(cartItems);
+        }  
         public List<UserCart> GetUserCarts(String userId)
         {
             return repo.GetUserCarts(userId);

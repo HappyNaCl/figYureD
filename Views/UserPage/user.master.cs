@@ -13,7 +13,7 @@ namespace figYureD.Views.UserPage
         {
             if(Session["user"] == null || Request.Cookies["user_cookie"] == null)
             {
-                Response.Redirect("/login", true);
+                Response.Redirect("/login");
             }
             else
             {

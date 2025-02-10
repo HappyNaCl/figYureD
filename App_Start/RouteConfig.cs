@@ -27,7 +27,7 @@ namespace figYureD.App_Start
             routes.MapPageRoute(
                 "AdminDashboard",
                 "admin",
-                "~/Views/Admin/AdminDashboard.aspx"
+                "~/Views/Admin/AdminTransaction.aspx"
                 );
 
             routes.MapPageRoute(
@@ -64,6 +64,12 @@ namespace figYureD.App_Start
                 "CartPage",
                 "cart",
                 "~/Views/UserPage/UserCart.aspx"
+                );
+
+            routes.MapPageRoute(
+                "TransactionPage",
+                "transactions",
+                "~/Views/UserPage/UserTransaction.aspx"
                 );
         }
     }

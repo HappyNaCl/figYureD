@@ -11,6 +11,12 @@ namespace figYureD.Controllers
     public class UserController
     {
         private readonly UserHandler handler = new UserHandler();
+
+        public figYureD.User GetUser(String userId)
+        {
+            return handler.GetUser(userId);
+        }
+
         public string InsertUser(string name, string email, string password, string confirmPassword)
         {
             if (name.Length == 0 || email.Length == 0 || password.Length == 0 || confirmPassword.Length == 0)
